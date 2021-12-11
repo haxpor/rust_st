@@ -46,17 +46,21 @@ fn main() {
     // for [T; N] for edition <2021 so it won't move, but will borrow intead
     // thus needs us to change from `a` to `&a` when call `into_iter()`.
     //
-    // Exception still although into_iter() not implemented, but `Copy` implemented
+    // Exception still although into_iter() not implemented, but Copy trait implemented
     // for such T then it will be copied instead of moved thus we can still
     // use such variable afterwards.
     //
-    // Primitive integer (in this case), or primitive data types (not BigInt) implement `Copy`
-    // function.
+    // Primitive integer (in this case), or primitive data types (not BigInt) implement Copy
+    // trait.
     //
     // See https://stackoverflow.com/a/34745885/571227.
     // See library/core/src/array/mod.rs for IntoIterator + into_iter in rust code.
     // See compiler/rustc_span/src/symbol.rs for integer symbol which depends on
-    //   Copy.
+    //   Copy trait.
+    // See
+    // https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=ab043cf7449cb45a1b4785e39b4a85a5
+    //   then try Run it to see the compilation error signaling that "... which
+    //   does not implement the Copy trait" thus it moved.
     // See https://github.com/rust-num/num/issues/191 as well for discussion.
     //
     // option 1
