@@ -1,0 +1,13 @@
+[package]
+name = "libproj"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+# use cdylib as we want C ABI, rather than rust's ABI itself of `dylib` option
+# NOTE: we need to add this line ourselves
+crate-type = ["rlib", "cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
