@@ -35,7 +35,7 @@ mod incrementer {
 
     impl<'a> Incrementable for StaticVarIncrementer {
         fn increment() {
-            *StaticVarIncrementer::get_static_var_as_mut() += 1
+            *StaticVarIncrementer::get_static_var_as_mut() += 1;
         }
 
         fn get() -> Ii {
