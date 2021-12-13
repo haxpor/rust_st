@@ -5,12 +5,17 @@
 ///   private function. In order to have such effect in the same file, introduce
 ///   mod scope.
 mod incrementer {
+    use std::borrow::BorrowMut;
+
     pub struct StaticVarIncrementer { }
 
     impl<'a> StaticVarIncrementer {
         fn get_static_var_as_mut() -> &'a mut u32 {
             static mut STATIC_VAR: u32 = 0;
-            unsafe { &mut STATIC_VAR as &mut u32 }
+
+            // either commented line, or the next
+            //unsafe { &mut STATIC_VAR as &mut u32 }
+            unsafe { STATIC_VAR.borrow_mut() }
         }
 
         pub fn increment() {
