@@ -34,6 +34,7 @@ fn main() {
     bar();
     
     print_result!(1u32 + 2);
+    print_result! { 1u32 + 2 }; // can also use this brace-style
     print_result!({
         let x = 1u32;
         x * x + 2 * x - 1
